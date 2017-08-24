@@ -33,7 +33,7 @@ function analyze(image){
     })
     // 結果のコールバック
     .then(function(result) {
-      document.getElementById("result").text = result;
+      document.getElementById("result").textContent = result;
   });
 }
 
