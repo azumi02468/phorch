@@ -34,9 +34,9 @@ function analyze(image){
     // 結果のコールバック
     .then(function(result) {
       console.log(result);
-      console.log("text:"+result.text);
-      document.getElementById("result").textContent = "aaa";
-      document.getElementById("result").textContent = result;
+      //console.log("text:"+result.text);
+      //document.getElementById("result").textContent = "aaa";
+      //document.getElementById("result").textContent = result;
   });
 }
 
