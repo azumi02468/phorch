@@ -32,8 +32,8 @@ function analyze(image){
       console.log('progress', p)
     })
     // 結果のコールバック
-    .then(function(result) {
-      console.log(result)
+    .then(function(ret) {
+      result.innerHTML = ret.text;
   });
 }
 
