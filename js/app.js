@@ -13,19 +13,27 @@ window.addEventListener("load", function(){
     }
     var file = document.getElementById("imageFile").files[0];
     reader.readAsDataURL(file);
+    
+    console.log(file.name);
+    // 画像解析開始
+    analyze(file.name);
+    
   }, true);
 }, true);
 
-Tesseract
-  // (読み込む画像, 言語) jpeg || png
-  .recognize('sampleImage.jpg', {lang: 'language'}) //exp: jpn, eng
-  //.ImageLike('media', lang)  //* browser only img || video || canvas
-  .progress(function(p) {
-    // 進歩状況の表示
-    console.log('progress', p)
-  })
-  // 結果のコールバック
-  .then(function(result) {
-    console.log(result)
-});
+// 画像から文字を解析する
+function analyze(image){
+  Tesseract
+    // (読み込む画像, 言語) jpeg || png
+    .recognize(image, {lang: 'japanese'}) //exp: jpn, eng
+    //.ImageLike('media', lang)  //* browser only img || video || canvas
+    .progress(function(p) {
+      // 進歩状況の表示
+      console.log('progress', p)
+    })
+    // 結果のコールバック
+    .then(function(result) {
+      console.log(result)
+  });
+}
 
