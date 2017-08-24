@@ -16,7 +16,7 @@ window.addEventListener("load", function(){
     
     console.log(file.name);
     // 画像解析開始
-    console.log(analyze(file).text);
+    console.log("sample:"+analyze(file).text);
     
   }, true);
 }, true);
