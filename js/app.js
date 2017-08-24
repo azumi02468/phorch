@@ -16,13 +16,14 @@ window.addEventListener("load", function(){
     
     console.log(file.name);
     // 画像解析開始
-    analyze(file);
+    console.log(analyze(file));
     
   }, true);
 }, true);
 
 // 画像から文字を解析する
 function analyze(image){
+  var ret;
   Tesseract
     // (読み込む画像, 言語) jpeg || png
     .recognize(image, {lang: 'jpn'}) //exp: jpn, eng
@@ -33,7 +34,8 @@ function analyze(image){
     })
     // 結果のコールバック
     .then(function(result) {
-      console.log(result)
+      ret = result;
   });
+  return ret;
 }
 
