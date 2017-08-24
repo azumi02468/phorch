@@ -25,7 +25,7 @@ window.addEventListener("load", function(){
 function analyze(image){
   Tesseract
     // (読み込む画像, 言語) jpeg || png
-    .recognize(image, {lang: 'eng'}) //exp: jpn, eng
+    .recognize(image, {lang: 'jpn'}) //exp: jpn, eng
     //.ImageLike('media', lang)  //* browser only img || video || canvas
     .progress(function(p) {
       // 進歩状況の表示
