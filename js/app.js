@@ -1,7 +1,9 @@
 jQuery(function($){
+  // ローディングマスク非表示
+  $('loading').hide();
   // 初期起動時
   $('#result').html("ファイルを選択してください。");
-  
+
   // File APIが使用できるかどうか判定
   if (!window.File){
     $('#result').html("File API 使用不可");
@@ -31,6 +33,9 @@ jQuery(function($){
 
   // 画像から文字を解析する
   function analyze(image){
+    // ローディングマスク表示
+    $('loading').show();
+    
     Tesseract
       // (読み込む画像, 言語) jpeg || png
       .recognize(image, {lang: 'jpn'}) //exp: jpn, eng
@@ -45,6 +50,9 @@ jQuery(function($){
         // 結果から検索リンクの生成
         $('#result').html("<a href='https://www.google.co.jp/search?q="+result.text+"' target='_blank'>"+result.text+"</a>");
     });
+    
+    // ローディングマスク非表示
+    $('loading').hide();
   }
 });
 
