@@ -15,11 +15,11 @@ jQuery(function($){
     
     // 画像ファイル選択時にソースURLを指定する
     reader.onload = function(event){
-      document.getElementById("image").src = reader.result;
+      $("#image").attr("src", reader.result);
     }
     
     // 画像ファイルをURLから読み込み、画面表示する
-    var file = document.getElementById("imageFile").files[0];
+    var file = $("#imageFile")[0].files[0];
     reader.readAsDataURL(file);
     
     // 画像解析準備
