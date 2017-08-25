@@ -1,6 +1,6 @@
 jQuery(function($){
   // ローディングマスク非表示
-  $('loading').hide();
+  $('#loading').hide();
   // 初期起動時
   $('#result').html("ファイルを選択してください。");
 
@@ -34,7 +34,7 @@ jQuery(function($){
   // 画像から文字を解析する
   function analyze(image){
     // ローディングマスク表示
-    $('loading').show();
+    $('#loading').show();
     
     Tesseract
       // (読み込む画像, 言語) jpeg || png
@@ -52,7 +52,7 @@ jQuery(function($){
     });
     
     // ローディングマスク非表示
-    $('loading').hide();
+    $('#loading').hide();
   }
 });
 
