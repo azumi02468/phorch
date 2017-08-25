@@ -27,15 +27,18 @@ jQuery(function($){
     // 画像解析準備
     $('#result').html("解析しています。しばらくお待ちください。<br />この処理には30秒～1分ほどかかります。");
     
+    // ローディングマスク表示
+    $('#loading').show();
+    
     // 画像解析
     analyze(file);
+    
+    // ローディングマスク非表示
+    $('#loading').hide();
   });
 
   // 画像から文字を解析する
   function analyze(image){
-    // ローディングマスク表示
-    $('#loading').show();
-    
     Tesseract
       // (読み込む画像, 言語) jpeg || png
       .recognize(image, {lang: 'jpn'}) //exp: jpn, eng
@@ -50,9 +53,6 @@ jQuery(function($){
         // 結果から検索リンクの生成
         $('#result').html("<a href='https://www.google.co.jp/search?q="+result.text+"' target='_blank'>"+result.text+"</a>");
     });
-    
-    // ローディングマスク非表示
-    $('#loading').hide();
   }
 });
 
