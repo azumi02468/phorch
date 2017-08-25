@@ -1,6 +1,6 @@
 jQuery(function($){
   // 初期起動時
-  $("#loading").addClass("hide");
+  $("#loading").toggleClass("hide");
   $("#result").html("ファイルを選択してください。");
 
   // File APIが使用できるかどうか判定
@@ -33,8 +33,9 @@ jQuery(function($){
   // 画像から文字を解析する
   function analyze(image){
     console.log("解析　開始");
+    
     // ローディングマスク表示
-    $("#loading").removeClass("hide");
+    $("#loading").toggleClass("hide");
     
     Tesseract
       // (読み込む画像, 言語) jpeg || png
@@ -51,9 +52,11 @@ jQuery(function($){
         $("#result").html("<a href='https://www.google.co.jp/search?q="+result.text+"' target='_blank'>"+result.text+"</a>");
         
         // ローディングマスク非表示
-        $("#loading").addClass("hide");
+        $("#loading").toggleClass("hide");
+        
+        console.log("解析　終了");
     });
-    console.log("解析　終了");
+
   }
 });
 
