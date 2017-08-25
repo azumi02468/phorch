@@ -1,12 +1,11 @@
 jQuery(function($){
-  // ローディングマスク非表示
-  $('#loading').hide();
   // 初期起動時
-  $('#result').html("ファイルを選択してください。");
+  $("#loading").addClass("hide");
+  $("#result").html("ファイルを選択してください。");
 
   // File APIが使用できるかどうか判定
   if (!window.File){
-    $('#result').html("File API 使用不可");
+    $("#result").html("File API 使用不可");
     return;
   }
   
@@ -25,20 +24,18 @@ jQuery(function($){
     reader.readAsDataURL(file);
     
     // 画像解析準備
-    $('#result').html("解析しています。しばらくお待ちください。<br />この処理には30秒～1分ほどかかります。");
-    
-    // ローディングマスク表示
-    $('#loading').show();
+    $("#result").html("解析しています。しばらくお待ちください。<br />この処理には30秒～1分ほどかかります。");
     
     // 画像解析
     analyze(file);
-    
-    // ローディングマスク非表示
-    $('#loading').hide();
   });
 
   // 画像から文字を解析する
   function analyze(image){
+    console.log("解析　開始");
+    // ローディングマスク表示
+    $("#loading").removeClass("hide");
+    
     Tesseract
       // (読み込む画像, 言語) jpeg || png
       .recognize(image, {lang: 'jpn'}) //exp: jpn, eng
@@ -51,8 +48,12 @@ jQuery(function($){
       .then(function(result) {
         console.log(result);
         // 結果から検索リンクの生成
-        $('#result').html("<a href='https://www.google.co.jp/search?q="+result.text+"' target='_blank'>"+result.text+"</a>");
+        $("#result").html("<a href='https://www.google.co.jp/search?q="+result.text+"' target='_blank'>"+result.text+"</a>");
+        
+        // ローディングマスク非表示
+        $("#loading").addClass("hide");
     });
+    console.log("解析　終了");
   }
 });
 
