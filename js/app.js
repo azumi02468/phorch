@@ -34,7 +34,8 @@ function analyze(image){
     })
     // 結果のコールバック
     .then(function(result) {
-      document.getElementById("result").innerText = result.text;
+      console.log(result);
+      document.getElementById("result").innerHTML = "<a href='https://www.google.co.jp/search?q='"+result.text+">result.text</a>";
   });
   return ret;
 }
