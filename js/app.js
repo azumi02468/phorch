@@ -1,5 +1,6 @@
 window.addEventListener("load", function(){
-   
+  result.innerHTML = "準備中";
+  
   if (!window.File){
     result.innerHTML = "File API 使用不可";
     return;
@@ -14,9 +15,8 @@ window.addEventListener("load", function(){
     var file = document.getElementById("imageFile").files[0];
     reader.readAsDataURL(file);
     
-    console.log(file.name);
     // 画像解析開始
-    console.log("sample:"+analyze(file));
+    analyze(file);
     
   }, true);
 }, true);
@@ -34,7 +34,7 @@ function analyze(image){
     })
     // 結果のコールバック
     .then(function(result) {
-      ret = result;
+      document.getElementById("result").innerText = result.text;
   });
   return ret;
 }
