@@ -24,7 +24,7 @@ jQuery(function($){
     reader.readAsDataURL(file);
     
     // Safariで見たい
-    info("file:" +$("#imageFile")[0].files[0]);
+    info("file:" +$("#imageFile")[0].files[0].name);
     
     // 画像解析準備
     $("#result").html("解析しています。しばらくお待ちください。<br />この処理には30秒～1分ほどかかります。");
@@ -46,8 +46,7 @@ jQuery(function($){
       //.ImageLike('media', lang)  //* browser only img || video || canvas
       .progress(function(p) {
         // 進歩状況の表示
-        console.log('progress', p);
-        info(p);
+        console.log('progress', p)
       })
       // 結果のコールバック
       .then(function(result) {
@@ -58,7 +57,7 @@ jQuery(function($){
         // ローディングマスク非表示
         $("#loading").toggleClass("hide");
         
-        info(result);
+        info(result.text);
         console.log("解析　終了");
     });
   }
