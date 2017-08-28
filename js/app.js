@@ -65,7 +65,8 @@ jQuery(function($){
   
   // ログ
   function info(log){
-    $('#log').html($('#log').html()+=log);
+    var str = $('#log').html() + log;
+    $('#log').html(str);
   }
 });
 
