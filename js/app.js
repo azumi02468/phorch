@@ -72,12 +72,13 @@ jQuery(function($){
   
   // 経過時間取得
   function getPast() {
-  var lastDate = NaN;
-  return function() {
-    var now = Date.now();
-    var past = now - lastDate;
-    lastDate = now;
-    return past;
+    var lastDate = NaN;
+    return function() {
+      var now = Date.now();
+      var past = now - lastDate;
+      lastDate = now;
+      return past;
+    }
   }
 });
 
