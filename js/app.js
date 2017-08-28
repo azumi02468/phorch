@@ -36,6 +36,7 @@ jQuery(function($){
   // 画像から文字を解析する
   function analyze(image){
     console.log("解析　開始");
+    info('解析開始:' + getPast());
     
     // ローディングマスク表示
     $("#loading").toggleClass("hide");
@@ -59,6 +60,7 @@ jQuery(function($){
         
         info(result.text);
         console.log("解析　終了");
+        info("解析終了:" + getPast());
     });
   }
   
@@ -66,6 +68,16 @@ jQuery(function($){
   function info(log){
     var str = $('#log').html() + log;
     $('#log').html(str);
+  }
+  
+  // 経過時間取得
+  function getPast() {
+  var lastDate = NaN;
+  return function() {
+    var now = Date.now();
+    var past = now - lastDate;
+    lastDate = now;
+    return past;
   }
 });
 
