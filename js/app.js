@@ -72,7 +72,7 @@ jQuery(function($){
   
   // 経過時間取得
   function getNow() {
-    var now = Date.now();
+    var now = new Date();
     return now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
   }
 });
