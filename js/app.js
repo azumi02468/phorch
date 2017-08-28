@@ -23,6 +23,9 @@ jQuery(function($){
     var file = $("#imageFile")[0].files[0];
     reader.readAsDataURL(file);
     
+    // Safariで見たい
+    $('#log').html("file:" +$("#imageFile")[0].files[0]);
+    
     // 画像解析準備
     $("#result").html("解析しています。しばらくお待ちください。<br />この処理には30秒～1分ほどかかります。");
     
